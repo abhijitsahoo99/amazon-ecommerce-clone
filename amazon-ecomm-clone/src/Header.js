@@ -2,10 +2,16 @@ import React from 'react';
 import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import {useNavigate} from "react-router-dom";
+import {Link} from 'react-router-dom';
+
 function Header() {
+    const navigate = useNavigate()
   return (
     <div className='header'>
-    <img src='http://pngimg.com/uploads/amazon/amazon_PNG11.png' className= 'header_logo' alt='amazon-logo' />
+    <Link to="/">
+        <img src='http://pngimg.com/uploads/amazon/amazon_PNG11.png' className= 'header_logo' alt='amazon-logo' />
+    </Link>
 
     <div className='header_search'>
         <input className='header_searchInput' type='text'  />
@@ -26,7 +32,9 @@ function Header() {
             <span className='header_optionLineTwo'>Prime</span>
         </div>
         <div className='header_optionBasket'>
-            <ShoppingBasketIcon  />
+            <ShoppingBasketIcon className= "shopping_basket" onClick = {() => {
+                navigate("/checkout")
+            }} />
             <span className='header_optionLineTwo header_basketCount'>0</span>
         </div>
     </div>
